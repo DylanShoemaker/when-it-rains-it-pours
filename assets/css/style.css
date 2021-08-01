@@ -1,12 +1,12 @@
 
-.btn {
+* {
   border: 1px solid black;
 }
 
 header h1 {
   text-align: center;
 }
-main .flex-row {
+main .thisone {
   display: flex;
   flex-wrap: wrap;
   flex: 100%;
