@@ -1,4 +1,8 @@
-
+:root {
+  --primary-color: #024e76;
+  --secondary-color: #fce138;
+  --tertiary-color: #39a6b2;
+}
 * {
   border: 1px solid black;
 }
@@ -6,8 +10,15 @@
 header h1 {
   text-align: center;
 }
+
 main .thisone {
   display: flex;
   flex-wrap: wrap;
   flex: 100%;
+}
+main .thisonefosho {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 100%;
+  justify-content: space-between;
 }
