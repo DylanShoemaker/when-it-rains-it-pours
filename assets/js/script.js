@@ -101,31 +101,53 @@ formEl.addEventListener("submit",function(event){
   .then(data => {
     console.log(dayOneDate);
     //moment(dayOneDate).format('MM/DD/YYYY').innerText = data.list[6].dt_txt;
+
     dayOneDate.innerText = tomorrow
-    dayOneIcon.innerText = data.list[6].weather[0].icon;
+    dayOneIcon = data.list[6].weather[0].icon;
     dayOneTemp.innerText = data.list[6].main.temp;
     dayOneWind.innerText = data.list[6].wind.speed;
     dayOneHumidity.innerText = data.list[6].main.humidity;
+
+    var iconUrlOne = "http://openweathermap.org/img/w/" + dayOneIcon + ".png";
+    $("#dayOneIcon").html("<img src='" + iconUrlOne  + "'>");  
+
     dayTwoDate.innerText = threeDay
-    dayTwoIcon.innerText = data.list[14].weather[0].icon;
+    dayTwoIcon = data.list[14].weather[0].icon;
     dayTwoTemp.innerText = data.list[14].main.temp;
     dayTwoWind.innerText = data.list[14].wind.speed;
     dayTwoHumidity.innerText = data.list[14].main.humidity;
+
+    var iconUrlTwo = "http://openweathermap.org/img/w/" + dayTwoIcon + ".png";
+    $("#dayTwoIcon").html("<img src='" + iconUrlTwo  + "'>");  
+
     dayThreeDate.innerText = fourDay
-    dayThreeIcon.innerText = data.list[22].weather[0].icon;
+    dayThreeIcon = data.list[22].weather[0].icon;
     dayThreeTemp.innerText = data.list[22].main.temp;
     dayThreeWind.innerText = data.list[22].wind.speed;
     dayThreeHumidity.innerText = data.list[22].main.humidity;
+
+    var iconUrlThree = "http://openweathermap.org/img/w/" + dayThreeIcon + ".png";
+    $("#dayThreeIcon").html("<img src='" + iconUrlThree  + "'>");  
+
     dayFourDate.innerText = fiveDay
-    dayFourIcon.innerText = data.list[30].weather[0].icon;
+    dayFourIcon = data.list[30].weather[0].icon;
     dayFourTemp.innerText = data.list[30].main.temp;
     dayFourWind.innerText = data.list[30].wind.speed;
     dayFourHumidity.innerText = data.list[30].main.humidity;
+
+    var iconUrlFour = "http://openweathermap.org/img/w/" + dayFourIcon + ".png";
+    $("#dayFourIcon").html("<img src='" + iconUrlFour  + "'>");  
+
     dayFiveDate.innerText = sixDay
-    dayFiveIcon.innerText = data.list[38].weather[0].icon;
+    dayFiveIcon = data.list[38].weather[0].icon;
     dayFiveTemp.innerText = data.list[38].main.temp;
     dayFiveWind.innerText = data.list[38].wind.speed;
     dayFiveHumidity.innerText = data.list[38].main.humidity;
+
+
+    var iconUrlFive = "http://openweathermap.org/img/w/" + dayFiveIcon + ".png";
+      $("#dayFiveIcon").html("<img src='" + iconUrlFive  + "'>");  
+
   });
 });
 
