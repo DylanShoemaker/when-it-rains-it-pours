@@ -4,7 +4,8 @@
   --tertiary-color: #39a6b2;
 }
 * {
-  border: 1px solid black;
+  /*border: 1px solid black;*/
+  padding: .4vw;
 }
 
 header h1 {
@@ -21,4 +22,8 @@ main .thisonefosho {
   flex-wrap: wrap;
   flex: 100%;
   justify-content: space-between;
+}
+button, .btnClass, .user-form, #city-name, .nopad {
+  width: 100%;
+  padding-left: .4vw;
 }

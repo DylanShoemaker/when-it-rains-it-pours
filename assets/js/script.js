@@ -27,15 +27,15 @@ formEl.addEventListener("submit", function (event) {
     .then(response => response.json())
     .then(data => {
       cityOutput.innerText = data.name;
-
+      
       var butn = document.createElement("input");
       butn.setAttribute("type", "submit");
       butn.setAttribute("value", data.name);
       butn.setAttribute("id", data.name);
       butn.setAttribute("class", "btnClass");
-      buttonList.appendChild(butn);
+      buttonList.prepend(butn);
       //console.log(data);
-
+      // button-list div children limit
       $(".btnClass").click(function (event) {    //https://www.geeksforgeeks.org/how-to-create-a-form-dynamically-with-the-javascript/
 
         event.preventDefault();
@@ -46,8 +46,14 @@ formEl.addEventListener("submit", function (event) {
           .then(response => response.json())
           .then(data => {
             cityOutput.innerText = data.name;
+            //cityName 
+            // this.setAttribute("placeholder", data.name);
+            
+            console.dir(this);
+            cityName.value = "";
+            cityName.setAttribute("placeholder", data.name);
 
-            var latEl = data.coord.lat.toFixed(2);
+            var latEl = data.coord.lat.toFixed(2); 
             var lonEl = data.coord.lon.toFixed(2);
             //use the coordinate search api to pull up the data because the name search api does not include UV Index info
             fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + latEl + "&lon=" + lonEl + "&exclude=hourly&units=imperial&appid=3cdd7f0cff5a4ed1af7ae0635d8af1e2")
@@ -107,6 +113,7 @@ formEl.addEventListener("submit", function (event) {
 
       dayOneDate.innerText = tomorrow
       dayOneIcon = data.list[6].weather[0].icon;
+      console.log(data);
       dayOneTemp.innerText = data.list[6].main.temp;
       dayOneWind.innerText = data.list[6].wind.speed;
       dayOneHumidity.innerText = data.list[6].main.humidity;
