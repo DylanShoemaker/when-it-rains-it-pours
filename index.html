@@ -23,67 +23,140 @@
       <div class="col-12 col-md-3 nopad">
         <h4>Search for a City:</h4>
         <form id="user-form">
-          <input name="city-name" id="city-name" type="text" autofocus="true" class="form-input" placeholder="Enter City Name"/></br>
+          <input name="city-name" id="city-name" type="text" autofocus="true" class="form-input"
+            placeholder="Enter City Name" /></br>
           <button type="submit" class="btn">Search</button>
         </form>
         <section>
           <div id="button-list"></div>
         </section>
-        
       </div>
-
-      <div class="col-12 col-md-9">
+      <div class="col-12 col-md-9 ">
         <div class="thisone">
           <div id="output-city">&nbsp;</div>
           <div id="currentDay"></div>
           <div id="icon">&nbsp;</div>
         </div>
-        <div id="output-temp">&nbsp;</div>
-        <div id="output-wind">&nbsp;</div>
-        <div id="output-humidity">&nbsp;</div>
-        <div id="output-uv">&nbsp;</div>
-        <div class="5daycontainer">
-          <h3>5-Day Forecast:</h3>
-          <div class="thisonefosho">
-            <div>
-              <div id="dayOneDate">&nbsp;</div>
-              <div id="dayOneIcon">&nbsp;</div>
+        <div class="thisone">
+          <div>Temp:</div>
+          <div id="output-temp">&nbsp;</div>
+          <div>&deg;F</div>
+        </div>
+        <div class="thisone">
+          <div>Wind:</div>
+          <div id="output-wind">&nbsp;</div>
+          <div>MPH</div>
+        </div>
+        <div class="thisone">
+          <div>Humidity:</div>
+          <div id="output-humidity">&nbsp;</div>
+          <div>%</div>
+        </div>
+        <div class="thisone">
+          <div>UV Index:</div>
+          <div id="output-uv">&nbsp;</div>
+        </div>
+
+        <h3>5-Day Forecast:</h3>
+        <div class="thisonefosho">
+          <div>
+            <div id="dayOneDate">&nbsp;</div>
+            <div id="dayOneIcon">&nbsp;</div>
+            <div class="thisone">
+              <div>Temp:</div>
               <div id="dayOneTemp">&nbsp;</div>
+              <div>&deg;F</div>
+            </div>
+            <div class="thisone">
+              <div>Wind:</div>
               <div id="dayOneWind">&nbsp;</div>
+              <div>MPH</div>
+            </div>
+            <div class="thisone">
+              <div>Humidity:</div>
               <div id="dayOneHumidity">&nbsp;</div>
+              <div>%</div>
             </div>
-            <div>
-              <div id="dayTwoDate">&nbsp;</div>
-              <div id="dayTwoIcon">&nbsp;</div>
+          </div>
+          <div>
+            <div id="dayTwoDate">&nbsp;</div>
+            <div id="dayTwoIcon">&nbsp;</div>
+            <div class="thisone">
+              <div>Temp:</div>
               <div id="dayTwoTemp">&nbsp;</div>
+              <div>&deg;F</div>
+            </div>
+            <div class="thisone">
+              <div>Wind:</div>
               <div id="dayTwoWind">&nbsp;</div>
+              <div>MPH</div>
+            </div>
+            <div class="thisone">
+              <div>Humidity:</div>
               <div id="dayTwoHumidity">&nbsp;</div>
+              <div>%</div>
             </div>
-            <div>
-              <div id="dayThreeDate">&nbsp;</div>
-              <div id="dayThreeIcon">&nbsp;</div>
+          </div>
+          <div>
+            <div id="dayThreeDate">&nbsp;</div>
+            <div id="dayThreeIcon">&nbsp;</div>
+            <div class="thisone">
+              <div>Temp:</div>
               <div id="dayThreeTemp">&nbsp;</div>
+              <div>&deg;F</div>
+            </div>
+            <div class="thisone">
+              <div>Wind:</div>
               <div id="dayThreeWind">&nbsp;</div>
+              <div>MPH</div>
+            </div>
+            <div class="thisone">
+              <div>Humidity:</div>
               <div id="dayThreeHumidity">&nbsp;</div>
+              <div>%</div>
             </div>
-            <div>
-              <div id="dayFourDate">&nbsp;</div>
-              <div id="dayFourIcon">&nbsp;</div>
+          </div>
+          <div>
+            <div id="dayFourDate">&nbsp;</div>
+            <div id="dayFourIcon">&nbsp;</div>
+            <div class="thisone">
+              <div>Temp:</div>
               <div id="dayFourTemp">&nbsp;</div>
-              <div id="dayFourWind">&nbsp;</div>
-              <div id="dayFourHumidity">&nbsp;</div>
+              <div>&deg;F</div>
             </div>
-            <div>
-              <div id="dayFiveDate">&nbsp;</div>
-              <div id="dayFiveIcon">&nbsp;</div>
+            <div class="thisone">
+              <div>Wind:</div>
+              <div id="dayFourWind">&nbsp;</div>
+              <div>MPH</div>
+            </div>
+            <div class="thisone">
+              <div>Humidity:</div>
+              <div id="dayFourHumidity">&nbsp;</div>
+              <div>%</div>
+            </div>
+          </div>
+          <div>
+            <div id="dayFiveDate">&nbsp;</div>
+            <div id="dayFiveIcon">&nbsp;</div>
+            <div class="thisone">
+              <div>Temp:</div>
               <div id="dayFiveTemp">&nbsp;</div>
+              <div>&deg;F</div>
+            </div>
+            <div class="thisone">
+              <div>Wind:</div>
               <div id="dayFiveWind">&nbsp;</div>
+              <div>MPH</div>
+            </div>
+            <div class="thisone">
+              <div>Humidity:</div>
               <div id="dayFiveHumidity">&nbsp;</div>
+              <div>%</div>
             </div>
           </div>
         </div>
+
       </div>
-    </div>
   </main>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

@@ -27,7 +27,7 @@ formEl.addEventListener("submit", function (event) {
     .then(response => response.json())
     .then(data => {
       cityOutput.innerText = data.name;
-      
+      cityName.value = "";
       var butn = document.createElement("input");
       butn.setAttribute("type", "submit");
       butn.setAttribute("value", data.name);
@@ -35,7 +35,7 @@ formEl.addEventListener("submit", function (event) {
       butn.setAttribute("class", "btnClass");
       buttonList.prepend(butn);
       //console.log(data);
-      // button-list div children limit
+      ///////////////////////// button-list div children limit
       $(".btnClass").click(function (event) {    //https://www.geeksforgeeks.org/how-to-create-a-form-dynamically-with-the-javascript/
 
         event.preventDefault();
@@ -88,6 +88,23 @@ formEl.addEventListener("submit", function (event) {
           windOutput.innerText = data.current.wind_speed;
           humidityOutput.innerText = data.current.humidity;
           uvOutput.innerText = data.current.uvi;
+          if (data.current.uvi < 3 ) 
+          {
+            uvOutput.setAttribute("class", "green");
+          }
+          else if (3 < data.current.uvi < 5 )
+          {
+            uvOutput.setAttribute("class", "orange");
+          }
+          
+          else
+          {
+            uvOutput.setAttribute("class", "red");
+          }
+          
+          console.log(uvOutput);
+           
+
           iconCode = data.current.weather[0].icon;
           var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
           $("#icon").html("<img src='" + iconUrl + "'>");  //https://www.reddit.com/r/FreeCodeCamp/comments/4con5s/how_do_i_use_the_icon_given_in_the_open_weather/
