@@ -23,95 +23,103 @@ formEl.addEventListener("submit", function (event) {
   event.preventDefault();
 
   //use the name search api to search for the cities coordinates
-  fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName.value + '&units=imperial&appid=3cdd7f0cff5a4ed1af7ae0635d8af1e2')
-    .then(response => response.json())
-    .then(data => {
-      cityOutput.innerText = data.name;
-      cityName.value = "";
-      var butn = document.createElement("input");
-      butn.setAttribute("type", "submit");
-      butn.setAttribute("value", data.name);
-      butn.setAttribute("id", data.name);
-      butn.setAttribute("class", "btnClass");
-      buttonList.prepend(butn);
-      //console.log(data);
-      ///////////////////////// button-list div children limit
-      $(".btnClass").click(function (event) {    //https://www.geeksforgeeks.org/how-to-create-a-form-dynamically-with-the-javascript/
-
-        event.preventDefault();
-        //console.dir(this.id);
-
-        //console.log(this);
-        fetch('https://api.openweathermap.org/data/2.5/weather?q=' + this.id + '&units=imperial&appid=3cdd7f0cff5a4ed1af7ae0635d8af1e2')
-          .then(response => response.json())
-          .then(data => {
-            cityOutput.innerText = data.name;
-            //cityName 
-            // this.setAttribute("placeholder", data.name);
-            
-            console.dir(this);
-            cityName.value = "";
-            cityName.setAttribute("placeholder", data.name);
-
-            var latEl = data.coord.lat.toFixed(2); 
-            var lonEl = data.coord.lon.toFixed(2);
-            //use the coordinate search api to pull up the data because the name search api does not include UV Index info
-            fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + latEl + "&lon=" + lonEl + "&exclude=hourly&units=imperial&appid=3cdd7f0cff5a4ed1af7ae0635d8af1e2")
-              .then(response => response.json())
-              .then((data) => {
-
-                tempOutput.innerText = data.current.temp;
-                windOutput.innerText = data.current.wind_speed;
-                humidityOutput.innerText = data.current.humidity;
-                uvOutput.innerText = data.current.uvi;
-                iconCode = data.current.weather[0].icon;
-                var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
-                $("#icon").html("<img src='" + iconUrl + "'>");  //https://www.reddit.com/r/FreeCodeCamp/comments/4con5s/how_do_i_use_the_icon_given_in_the_open_weather/
+  fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName.value + '&units=imperial&appid=3cdd7f0cff5a4ed1af7ae0635d8af1e2').then(function (response) {
+    if (response.ok) {
+      response.json().then(function (data) {
 
 
 
-              });
+        cityOutput.innerText = data.name;
+        cityName.value = "";
+        var butn = document.createElement("input");
+        butn.setAttribute("type", "submit");
+        butn.setAttribute("value", data.name);
+        butn.setAttribute("id", data.name);
+        butn.setAttribute("class", "btnClass");
+        buttonList.prepend(butn);
+        buttonList.length
+        //console.log(data);
+        ///////////////////////// button-list div children limit
+        $(".btnClass").click(function (event) {    //https://www.geeksforgeeks.org/how-to-create-a-form-dynamically-with-the-javascript/
+
+          event.preventDefault();
+          //console.dir(this.id);
+
+          //console.log(this);
+          fetch('https://api.openweathermap.org/data/2.5/weather?q=' + this.id + '&units=imperial&appid=3cdd7f0cff5a4ed1af7ae0635d8af1e2')
+            .then(response => response.json())
+            .then(data => {
+              cityOutput.innerText = data.name;
+              //cityName 
+              // this.setAttribute("placeholder", data.name);
+
+              console.dir(this);
+              cityName.value = "";
+              cityName.setAttribute("placeholder", data.name);
+
+              var latEl = data.coord.lat.toFixed(2);
+              var lonEl = data.coord.lon.toFixed(2);
+              //use the coordinate search api to pull up the data because the name search api does not include UV Index info
+              fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + latEl + "&lon=" + lonEl + "&exclude=hourly&units=imperial&appid=3cdd7f0cff5a4ed1af7ae0635d8af1e2")
+                .then(response => response.json())
+                .then((data) => {
+
+                  tempOutput.innerText = data.current.temp;
+                  windOutput.innerText = data.current.wind_speed;
+                  humidityOutput.innerText = data.current.humidity;
+                  uvOutput.innerText = data.current.uvi;
+                  iconCode = data.current.weather[0].icon;
+                  var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+                  $("#icon").html("<img src='" + iconUrl + "'>");  //https://www.reddit.com/r/FreeCodeCamp/comments/4con5s/how_do_i_use_the_icon_given_in_the_open_weather/
 
 
-          })
 
-      });
 
-      var latEl = data.coord.lat.toFixed(2);
-      var lonEl = data.coord.lon.toFixed(2);
-      //use the coordinate search api to pull up the data because the name search api does not include UV Index info
-      fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + latEl + "&lon=" + lonEl + "&exclude=hourly&units=imperial&appid=3cdd7f0cff5a4ed1af7ae0635d8af1e2")
-        .then(response => response.json())
-        .then((data) => {
+                });
 
-          tempOutput.innerText = data.current.temp;
-          windOutput.innerText = data.current.wind_speed;
-          humidityOutput.innerText = data.current.humidity;
-          uvOutput.innerText = data.current.uvi;
-          if (data.current.uvi < 3 ) 
-          {
-            uvOutput.setAttribute("class", "green");
-          }
-          else if (3 < data.current.uvi < 5 )
-          {
-            uvOutput.setAttribute("class", "orange");
-          }
-          
-          else
-          {
-            uvOutput.setAttribute("class", "red");
-          }
-          
-          console.log(uvOutput);
-           
 
-          iconCode = data.current.weather[0].icon;
-          var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
-          $("#icon").html("<img src='" + iconUrl + "'>");  //https://www.reddit.com/r/FreeCodeCamp/comments/4con5s/how_do_i_use_the_icon_given_in_the_open_weather/
-
+            })
 
         });
-    });
+
+        var latEl = data.coord.lat.toFixed(2);
+        var lonEl = data.coord.lon.toFixed(2);
+        //use the coordinate search api to pull up the data because the name search api does not include UV Index info
+        fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + latEl + "&lon=" + lonEl + "&exclude=hourly&units=imperial&appid=3cdd7f0cff5a4ed1af7ae0635d8af1e2")
+          .then(response => response.json())
+          .then((data) => {
+
+            tempOutput.innerText = data.current.temp;
+            windOutput.innerText = data.current.wind_speed;
+            humidityOutput.innerText = data.current.humidity;
+            uvOutput.innerText = data.current.uvi;
+            if (data.current.uvi < 3) {
+              uvOutput.setAttribute("class", "green");
+            }
+            else if (3 < data.current.uvi < 5) {
+              uvOutput.setAttribute("class", "orange");
+            }
+
+            else {
+              uvOutput.setAttribute("class", "red");
+            }
+
+            console.log(uvOutput);
+
+
+            iconCode = data.current.weather[0].icon;
+            var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+            $("#icon").html("<img src='" + iconUrl + "'>");  //https://www.reddit.com/r/FreeCodeCamp/comments/4con5s/how_do_i_use_the_icon_given_in_the_open_weather/
+
+
+          });
+      });
+
+    } else {
+      cityOutput.innerText = "You were not supposed to do that Sean";
+    }
+
+  })
 });
 
 
@@ -229,7 +237,7 @@ formEl.addEventListener("submit", function (event) {
             $("#dayFiveIcon").html("<img src='" + iconUrlFive + "'>");
 
           });
-       });
+      });
     });
 });
 
